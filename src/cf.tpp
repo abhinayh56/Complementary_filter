@@ -1,23 +1,23 @@
 #include "cf.h"
 
 template <typename T>
-estimators::complimentary_filter::CF<T>::CF()
+estimators::cf::CF<T>::CF()
 {
 }
 
 template <typename T>
-estimators::complimentary_filter::CF<T>::~CF()
+estimators::cf::CF<T>::~CF()
 {
 }
 
 template <typename T>
-void estimators::complimentary_filter::CF<T>::init(T fc_, T dt_)
+void estimators::cf::CF<T>::init(T fc_, T dt_)
 {
     set_param(fc_, dt_);
 }
 
 template <typename T>
-void estimators::complimentary_filter::CF<T>::set_param(T fc_, T dt_)
+void estimators::cf::CF<T>::set_param(T fc_, T dt_)
 {
     fc = fc_;
     dt = dt_;
@@ -26,24 +26,24 @@ void estimators::complimentary_filter::CF<T>::set_param(T fc_, T dt_)
 }
 
 template <typename T>
-T estimators::complimentary_filter::CF<T>::update(T x1_i, T x2_i)
+T estimators::cf::CF<T>::update(T x1_i, T x2_i)
 {
     return alpha * x1_i + (1.0 - alpha) * x2_i;
 }
 
 template <typename T>
-void estimators::complimentary_filter::CF<T>::reset()
+void estimators::cf::CF<T>::reset()
 {
 }
 
 template <typename T>
-void estimators::complimentary_filter::CF<T>::set_fc(T fc_)
+void estimators::cf::CF<T>::set_fc(T fc_)
 {
     set_param(fc_, dt);
 }
 
 template <typename T>
-void estimators::complimentary_filter::CF<T>::set_tau(T tau_)
+void estimators::cf::CF<T>::set_tau(T tau_)
 {
     tau = tau_;
     fc = 1.0 / (6.28318530717958647692528676655900576 * tau);
@@ -51,13 +51,13 @@ void estimators::complimentary_filter::CF<T>::set_tau(T tau_)
 }
 
 template <typename T>
-void estimators::complimentary_filter::CF<T>::set_dt(T dt_)
+void estimators::cf::CF<T>::set_dt(T dt_)
 {
     set_param(fc, dt_);
 }
 
 template <typename T>
-void estimators::complimentary_filter::CF<T>::set_alpha(T alpha_)
+void estimators::cf::CF<T>::set_alpha(T alpha_)
 {
     alpha = alpha_;
     tau = ((1.0 - alpha) * dt) / alpha;
@@ -65,25 +65,25 @@ void estimators::complimentary_filter::CF<T>::set_alpha(T alpha_)
 }
 
 template <typename T>
-T estimators::complimentary_filter::CF<T>::get_fc()
+T estimators::cf::CF<T>::get_fc()
 {
     return fc;
 }
 
 template <typename T>
-T estimators::complimentary_filter::CF<T>::get_tau()
+T estimators::cf::CF<T>::get_tau()
 {
     return tau;
 }
 
 template <typename T>
-T estimators::complimentary_filter::CF<T>::get_dt()
+T estimators::cf::CF<T>::get_dt()
 {
     return dt;
 }
 
 template <typename T>
-T estimators::complimentary_filter::CF<T>::get_alpha()
+T estimators::cf::CF<T>::get_alpha()
 {
     return alpha;
 }

@@ -3,7 +3,7 @@
 
 namespace estimators
 {
-    namespace complimentary_filter
+    namespace cf
     {
         template <typename T>
         class CF
