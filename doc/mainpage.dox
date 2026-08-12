@@ -1,0 +1,166 @@
+/**
+ * @mainpage Complementary Filter Library
+ *
+ * @section intro Introduction
+ *
+ * This library provides a generic implementation of a first-order
+ * complementary filter for sensor fusion.
+ *
+ * A complementary filter combines measurements from different sensors
+ * by exploiting their complementary frequency characteristics. A
+ * low-frequency measurement from one sensor can be combined with a
+ * high-frequency measurement from another sensor to obtain a more
+ * stable estimate.
+ *
+ * The library provides a templated @ref estimators::cf::CF class that
+ * supports different numeric types such as @c float and @c double.
+ *
+ *
+ * @section features Features
+ *
+ * The complementary filter library provides:
+ *
+ * - First-order complementary filtering.
+ * - Fusion of two sensor measurements.
+ * - Configurable cutoff frequency.
+ * - Configurable sampling time.
+ * - Configurable filter time constant.
+ * - Configurable complementary filter coefficient.
+ * - Runtime parameter modification.
+ * - Filter state reset functionality.
+ * - Getter functions for filter parameters.
+ * - Support for different numeric data types through templates.
+ *
+ *
+ * @section usage Basic Usage
+ *
+ * A complementary filter can be created and initialized using a cutoff
+ * frequency and sampling time:
+ *
+ * @code{.cpp}
+ * #include "cf.h"
+ *
+ * estimators::cf::CF<double> filter;
+ *
+ * filter.init(2.5, 0.006);
+ *
+ * double output = filter.update(x1, x2);
+ * @endcode
+ *
+ *
+ * @section parameters Filter Parameters
+ *
+ * The filter can be configured using the following parameters:
+ *
+ * - @c fc   : Cutoff frequency of the filter.
+ * - @c tau  : Time constant of the filter.
+ * - @c dt   : Sampling time or control-loop period.
+ * - @c alpha: Complementary filter coefficient.
+ *
+ * The parameters can be configured during initialization or individually
+ * using the corresponding setter functions.
+ *
+ *
+ * @section configuration Parameter Configuration
+ *
+ * The filter can be initialized using:
+ *
+ * @code{.cpp}
+ * filter.init(fc, dt);
+ * @endcode
+ *
+ * Alternatively, individual parameters can be configured using:
+ *
+ * @code{.cpp}
+ * filter.set_fc(fc);
+ * filter.set_tau(tau);
+ * filter.set_dt(dt);
+ * filter.set_alpha(alpha);
+ * @endcode
+ *
+ *
+ * @section update Updating the Filter
+ *
+ * New sensor measurements are provided to the filter using the
+ * @ref estimators::cf::CF::update function:
+ *
+ * @code{.cpp}
+ * double output = filter.update(x1, x2);
+ * @endcode
+ *
+ * The two input measurements are combined according to the configured
+ * complementary filter parameters, and the filtered output is returned.
+ *
+ *
+ * @section reset Resetting the Filter
+ *
+ * The internal filter state can be reset using:
+ *
+ * @code{.cpp}
+ * filter.reset();
+ * @endcode
+ *
+ *
+ * @section access Accessing Parameters
+ *
+ * The current filter parameters can be obtained using:
+ *
+ * @code{.cpp}
+ * double fc    = filter.get_fc();
+ * double tau   = filter.get_tau();
+ * double dt    = filter.get_dt();
+ * double alpha = filter.get_alpha();
+ * @endcode
+ *
+ *
+ * @section classes Main Class
+ *
+ * The main class provided by this library is:
+ *
+ * - @ref estimators::cf::CF - Generic complementary filter for sensor fusion.
+ *
+ *
+ * @section namespace Namespace
+ *
+ * The complementary filter implementation is contained in:
+ *
+ * @code
+ * estimators::cf
+ * @endcode
+ *
+ *
+ * @section example Complete Example
+ *
+ * @code{.cpp}
+ * #include "cf.h"
+ *
+ * int main()
+ * {
+ *     estimators::cf::CF<double> filter;
+ *
+ *     filter.init(2.5, 0.006);
+ *
+ *     double x1 = 10.0;
+ *     double x2 = 10.5;
+ *
+ *     double output = filter.update(x1, x2);
+ *
+ *     return 0;
+ * }
+ * @endcode
+ *
+ *
+ * @section documentation Documentation
+ *
+ * Detailed documentation for the complementary filter class and its
+ * member functions is available through the
+ * @ref estimators::cf::CF class reference.
+ *
+ *
+ * @copyright
+ * Copyright (c) 2026 Abhinay Kumar
+ *
+ * @author Abhinay Kumar
+ * @version 1.0
+ * @date 2026-08-11
+ */
