@@ -28,7 +28,6 @@
  * - Configurable complementary filter coefficient.
  * - Runtime parameter modification.
  * - Filter state reset functionality.
- * - Getter functions for filter parameters.
  * - Support for different numeric data types through templates.
  *
  *
@@ -150,7 +149,7 @@
  * @endcode
  *
  *
- * @section documentation Documentation
+ * @section documentation Detailed Documentation
  *
  * Detailed documentation for the complementary filter class and its
  * member functions is available through the
